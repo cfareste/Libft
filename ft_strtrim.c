@@ -46,7 +46,6 @@ int static	calculate_end_idx(char const *s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
 	int		start;
 	int		end;
 
@@ -54,7 +53,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (0);
 	if (!set || !*s1)
 		return (ft_strdup(s1));
-	i = 0;
 	start = calculate_start_idx(s1, set);
 	end = calculate_end_idx(s1, set);
 	if (start > end)

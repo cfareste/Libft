@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   print_raw_utils_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfidalgo <cfidalgo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 13:18:30 by cfidalgo          #+#    #+#             */
-/*   Updated: 2024/01/17 16:54:55 by cfidalgo         ###   ########.fr       */
+/*   Created: 2024/02/17 01:22:20 by cfidalgo          #+#    #+#             */
+/*   Updated: 2024/02/17 01:23:03 by cfidalgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	print_raw_char(char c)
 {
-	char	*str;
-	size_t	s1_len;
-	size_t	s2_len;
+	return (write(1, &c, 1));
+}
 
-	if (!s1 || !s2)
-		return (0);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	str = malloc(sizeof(char) * (s1_len + s2_len + 1));
+int	print_raw_string(char *str)
+{
+	int	i;
+
+	i = 0;
 	if (!str)
-		return (0);
-	ft_strlcpy(str, s1, s1_len + 1);
-	ft_strlcpy(str + s1_len, s2, s2_len + 1);
-	return (str);
+		return (print_raw_string("(null)"));
+	while (str[i])
+	{
+		if (print_raw_char(str[i]) == -1)
+			return (-1);
+		i++;
+	}
+	return (i);
 }

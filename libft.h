@@ -14,6 +14,14 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
+# include "ft_printf.h"
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 50
+# endif
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -63,5 +71,10 @@ void	ft_lstdelone(t_list *lst, void (*del) (void *));
 void	ft_lstclear(t_list **lst, void (*del) (void *));
 void	ft_lstiter(t_list *lst, void (*f) (void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f) (void *), void (*del) (void *));
+char	**ft_split_set(char const *s, char const *set);
+int		ft_index(char *str, char c);
+int		ft_stroccurrences(char *str, char c);
+int		ft_stroccurrences_set(char *str, char *set);
+char	*get_next_line(int fd);
 
 #endif
