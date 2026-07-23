@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void static	set_flag(char flag, t_flags *flags)
+static void	set_flag(char flag, t_flags *flags)
 {
 	if (flag == '-')
 		flags->minus = 1;
@@ -26,7 +26,7 @@ void static	set_flag(char flag, t_flags *flags)
 		flags->zero = 1;
 }
 
-int static	get_number(char const *str, int *pos)
+static int	get_number(char const *str, int *pos)
 {
 	int		start_pos;
 	int		final_num;

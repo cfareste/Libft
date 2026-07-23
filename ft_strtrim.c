@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int static	check_c_in_set(char const *set, char c)
+static int	check_c_in_set(char const *set, char c)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ int static	check_c_in_set(char const *set, char c)
 	return (0);
 }
 
-int static	calculate_start_idx(char const *s1, char const *set)
+static int	calculate_start_idx(char const *s1, char const *set)
 {
 	int	i;
 
@@ -33,9 +33,9 @@ int static	calculate_start_idx(char const *s1, char const *set)
 	return (i);
 }
 
-int static	calculate_end_idx(char const *s1, char const *set)
+static int	calculate_end_idx(char const *s1, char const *set)
 {
-	size_t	i;
+	int	i;
 
 	i = ft_strlen(s1);
 	while (i-- >= 0)

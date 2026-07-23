@@ -38,7 +38,7 @@ int	print_character(char c, t_flags *flags)
 	return (bytes_written);
 }
 
-int static	print_sig_number_string(char *num_str, t_flags *flags, int n)
+static int	print_sig_number_string(char *num_str, t_flags *flags, int n)
 {
 	int	byt_wri;
 	int	wdt_wri;
@@ -67,7 +67,7 @@ int static	print_sig_number_string(char *num_str, t_flags *flags, int n)
 	return (byt_wri + wdt_wri);
 }
 
-int static	print_uns_nbr_string(char *num_str, t_flags *flags, unsigned int n)
+static int	print_uns_nbr_string(char *num_str, t_flags *flags, unsigned int n)
 {
 	int	byt_wri;
 	int	wdt_wri;

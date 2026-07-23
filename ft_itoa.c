@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int static	calculate_num_of_digits(int num)
+static int	calculate_num_of_digits(int num)
 {
 	int	digits;
 
@@ -27,7 +27,7 @@ int static	calculate_num_of_digits(int num)
 	return (digits + 1);
 }
 
-void static	putnbr(char *num, long n, int index)
+static void	putnbr(char *num, long n, int index)
 {
 	if (n < 0)
 		n *= -1;

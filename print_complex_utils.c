@@ -61,7 +61,7 @@ int	print_pointer(void *ptr, t_flags *flags)
 	return (num_length);
 }
 
-int static	print_hex_str(char *n_str, t_flags *flags, char sp, unsigned int n)
+static int	print_hex_str(char *n_str, t_flags *flags, char sp, unsigned int n)
 {
 	int	byt_wri;
 	int	wdt_wri;

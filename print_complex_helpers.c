@@ -27,7 +27,7 @@ int	calculate_total_hex_num_length(unsigned long n)
 	return (num_length);
 }
 
-void static	num_to_hex(char *num_str, unsigned long n, int idx)
+static void	num_to_hex(char *num_str, unsigned long n, int idx)
 {
 	char	*base;
 

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int static	calculate_num_of_digits(unsigned int num)
+static int	calculate_num_of_digits(unsigned int num)
 {
 	int	digits;
 
@@ -25,7 +25,7 @@ int static	calculate_num_of_digits(unsigned int num)
 	return (digits + 1);
 }
 
-void static	putnbr(char *num, unsigned int n, int index)
+static void	putnbr(char *num, unsigned int n, int index)
 {
 	if (n / 10 == 0)
 		num[index] = n + '0';

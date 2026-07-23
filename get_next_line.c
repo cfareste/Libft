@@ -1,5 +1,9 @@
 #include "libft.h"
 
+#ifndef OPEN_MAX
+# define OPEN_MAX 256
+#endif
+
 static char	*join_buffers(char **buffer, char *read_buffer, int bytes)
 {
 	char	*new_buffer;

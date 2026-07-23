@@ -37,7 +37,7 @@ int	calc_total_width(char *num_str, t_flags *flags, int bytes_written)
 	return (flags->width - bytes_written - has_hex_prefix);
 }
 
-int	static	check_padding_difference(char *num_str, t_flags *flags)
+static int	check_padding_difference(char *num_str, t_flags *flags)
 {
 	int	padding;
 	int	has_sign;
