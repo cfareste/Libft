@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	print_string(char *str, t_flags *flags)
+int	print_string(char *str, t_ft_printf_flags *flags)
 {
 	int	bytes_written;
 	int	spaces_written;
@@ -41,7 +42,7 @@ int	print_string(char *str, t_flags *flags)
 	return (spaces_written + bytes_written);
 }
 
-int	print_pointer(void *ptr, t_flags *flags)
+int	print_pointer(void *ptr, t_ft_printf_flags *flags)
 {
 	unsigned long	ptr_value;
 	int				num_length;
@@ -61,7 +62,7 @@ int	print_pointer(void *ptr, t_flags *flags)
 	return (num_length);
 }
 
-static int	print_hex_str(char *n_str, t_flags *flags, char sp, unsigned int n)
+static int	print_hex_str(char *n_str, t_ft_printf_flags *flags, char sp, unsigned int n)
 {
 	int	byt_wri;
 	int	wdt_wri;
@@ -90,7 +91,7 @@ static int	print_hex_str(char *n_str, t_flags *flags, char sp, unsigned int n)
 	return (byt_wri + wdt_wri + ((n && flags->hashtag) * 2));
 }
 
-int	print_hex_nbr(unsigned int n, char specifier, t_flags *flags)
+int	print_hex_nbr(unsigned int n, char specifier, t_ft_printf_flags *flags)
 {
 	char	*num_str;
 	int		num_length;

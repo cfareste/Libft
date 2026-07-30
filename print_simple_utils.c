@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	print_character(char c, t_flags *flags)
+int	print_character(char c, t_ft_printf_flags *flags)
 {
 	int	byte_to_print;
 	int	bytes_written;
@@ -38,7 +39,7 @@ int	print_character(char c, t_flags *flags)
 	return (bytes_written);
 }
 
-static int	print_sig_number_string(char *num_str, t_flags *flags, int n)
+static int	print_sig_number_string(char *num_str, t_ft_printf_flags *flags, int n)
 {
 	int	byt_wri;
 	int	wdt_wri;
@@ -67,7 +68,7 @@ static int	print_sig_number_string(char *num_str, t_flags *flags, int n)
 	return (byt_wri + wdt_wri);
 }
 
-static int	print_uns_nbr_string(char *num_str, t_flags *flags, unsigned int n)
+static int	print_uns_nbr_string(char *num_str, t_ft_printf_flags *flags, unsigned int n)
 {
 	int	byt_wri;
 	int	wdt_wri;
@@ -94,7 +95,7 @@ static int	print_uns_nbr_string(char *num_str, t_flags *flags, unsigned int n)
 	return (byt_wri + wdt_wri);
 }
 
-int	print_number(int n, t_flags *flags)
+int	print_number(int n, t_ft_printf_flags *flags)
 {
 	char	*num_str;
 	int		num_length;
@@ -107,7 +108,7 @@ int	print_number(int n, t_flags *flags)
 	return (num_length);
 }
 
-int	print_unsigned_number(unsigned int n, t_flags *flags)
+int	print_unsigned_number(unsigned int n, t_ft_printf_flags *flags)
 {
 	char	*num_str;
 	int		num_length;

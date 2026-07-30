@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include <stdarg.h>
 
-static int	handle_parameter(char const *str, int *pos, va_list *args, t_flags *flags)
+static int	handle_parameter(char const *str, int *pos, va_list *args, t_ft_printf_flags *flags)
 {
 	char	specifier;
 
@@ -35,7 +36,7 @@ static int	handle_parameter(char const *str, int *pos, va_list *args, t_flags *f
 		return (print_raw_char(specifier));
 }
 
-static int	handle_flag(char const *str, int *pos, va_list *args, t_flags *flags)
+static int	handle_flag(char const *str, int *pos, va_list *args, t_ft_printf_flags *flags)
 {
 	*pos = *pos + 1;
 	reset_flags(flags);
@@ -50,7 +51,7 @@ int	ft_printf(char const *str, ...)
 	int		final_length;
 	int		bytes_written;
 	va_list	args;
-	t_flags	flags;
+	t_ft_printf_flags	flags;
 
 	i = 0;
 	final_length = 0;

@@ -12,8 +12,6 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stdlib.h>
-# include "ft_printf.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 50
@@ -22,6 +20,8 @@
 # ifndef EQUAL_STRINGS
 #  define EQUAL_STRINGS 0
 # endif
+
+typedef unsigned long size_t;
 
 typedef struct s_list
 {
@@ -79,5 +79,40 @@ int		ft_index(char *str, char c);
 int		ft_stroccurrences(char *str, char c);
 int		ft_stroccurrences_set(char *str, char *set);
 char	*get_next_line(int fd);
+
+typedef struct s_ft_printf_flags
+{
+	int	minus;
+	int	plus;
+	int	space;
+	int	hashtag;
+	int	zero;
+	int	width;
+	int	precision;
+}	t_ft_printf_flags;
+
+int		ft_printf(char const *str, ...);
+int		print_raw_char(char c);
+int		print_raw_string(char *str);
+int		print_character(char c, t_ft_printf_flags *flags);
+int		print_number(int n, t_ft_printf_flags *flags);
+int		print_unsigned_number(unsigned int n, t_ft_printf_flags *flags);
+char	*ft_uitoa(unsigned int n);
+int		print_string(char *str, t_ft_printf_flags *flags);
+int		print_pointer(void *ptr, t_ft_printf_flags *flags);
+int		print_hex_nbr(unsigned int n, char specifier, t_ft_printf_flags *flags);
+int		calculate_total_hex_num_length(unsigned long n);
+void	puthex_in_str(char *num_str, unsigned long n, int idx);
+void	transform_hex_toupper(char *str);
+int		print_width(int bytes, char byte_to_print);
+int		print_precised_number(char *num_str, t_ft_printf_flags *flags, unsigned int n);
+int		print_hex_prefix(unsigned int n, char specifier);
+int		check_for_signs_flags(int n, t_ft_printf_flags *flags);
+int		calc_total_width(char *num_str, t_ft_printf_flags *flags, int bytes_written);
+void	process_precision(char *str, t_ft_printf_flags *flags);
+int		print_precised_string(char *str, int precision);
+int		calculate_width(char *str, t_ft_printf_flags *flags);
+int		count_flags(char const *str, int *pos, t_ft_printf_flags *flags);
+void	reset_flags(t_ft_printf_flags *flags);
 
 #endif

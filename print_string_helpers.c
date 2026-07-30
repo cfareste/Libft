@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	process_precision(char *str, t_flags *flags)
+void	process_precision(char *str, t_ft_printf_flags *flags)
 {
 	if (flags->precision == -2)
 		flags->precision = ft_strlen(str);
@@ -33,7 +33,7 @@ int	print_precised_string(char *str, int precision)
 	return (i);
 }
 
-int	calculate_width(char *str, t_flags *flags)
+int	calculate_width(char *str, t_ft_printf_flags *flags)
 {
 	int	strlen;
 

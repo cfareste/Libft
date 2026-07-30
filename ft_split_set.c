@@ -1,5 +1,6 @@
 #include "libft.h"
 #include <errno.h>
+#include <stdlib.h>
 
 static void	free_matrix(char **space)
 {

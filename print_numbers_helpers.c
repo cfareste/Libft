@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	calc_total_width(char *num_str, t_flags *flags, int bytes_written)
+int	calc_total_width(char *num_str, t_ft_printf_flags *flags, int bytes_written)
 {
 	int	strlen;
 	int	has_sign;
@@ -37,7 +37,7 @@ int	calc_total_width(char *num_str, t_flags *flags, int bytes_written)
 	return (flags->width - bytes_written - has_hex_prefix);
 }
 
-static int	check_padding_difference(char *num_str, t_flags *flags)
+static int	check_padding_difference(char *num_str, t_ft_printf_flags *flags)
 {
 	int	padding;
 	int	has_sign;
@@ -55,7 +55,7 @@ static int	check_padding_difference(char *num_str, t_flags *flags)
 	return (padding);
 }
 
-int	print_precised_number(char *num_str, t_flags *flags, unsigned int n)
+int	print_precised_number(char *num_str, t_ft_printf_flags *flags, unsigned int n)
 {
 	int	i;
 	int	precision;
@@ -92,7 +92,7 @@ int	print_hex_prefix(unsigned int n, char specifier)
 		return (print_raw_string("0x"));
 }
 
-int	check_for_signs_flags(int n, t_flags *flags)
+int	check_for_signs_flags(int n, t_ft_printf_flags *flags)
 {
 	if (flags->plus && n >= 0 && print_raw_char('+') == -1)
 		return (-1);

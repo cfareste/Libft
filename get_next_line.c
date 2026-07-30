@@ -1,4 +1,6 @@
 #include "libft.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 #ifndef OPEN_MAX
 # define OPEN_MAX 256

@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include <stdlib.h>
 
-static void	set_flag(char flag, t_flags *flags)
+static void	set_flag(char flag, t_ft_printf_flags *flags)
 {
 	if (flag == '-')
 		flags->minus = 1;
@@ -43,7 +44,7 @@ static int	get_number(char const *str, int *pos)
 	return (final_num);
 }
 
-int	count_flags(char const *str, int *pos, t_flags *flags)
+int	count_flags(char const *str, int *pos, t_ft_printf_flags *flags)
 {
 	while (str[*pos] == '-' || str[*pos] == '+' || str[*pos] == ' '
 		|| str[*pos] == '#' || str[*pos] == '0')
@@ -63,7 +64,7 @@ int	count_flags(char const *str, int *pos, t_flags *flags)
 	return (0);
 }
 
-void	reset_flags(t_flags *flags)
+void	reset_flags(t_ft_printf_flags *flags)
 {
 	flags->minus = 0;
 	flags->plus = 0;
