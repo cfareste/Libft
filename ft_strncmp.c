@@ -29,10 +29,15 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		return (1);
 	else if (i != n && (unsigned char) s1[i] < (unsigned char) s2[i])
 		return (-1);
-	return (0);
+	return (EQUAL_STRINGS);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	return ft_strncmp(s1, s2, -1);
+}
+
+int ft_are_string_equals(const char *s1, const char *s2)
+{
+	return ft_strcmp(s1, s2) == EQUAL_STRINGS;
 }
