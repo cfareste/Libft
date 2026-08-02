@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	ft_isstr_empty(const char *s)
+size_t	ft_is_str_empty(const char *s)
 {
 	return (s[0] == '\0');
 }
