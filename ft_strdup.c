@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
 #include <stdlib.h>
 
 char	*ft_strdup(const char *s1)
@@ -24,3 +25,15 @@ char	*ft_strdup(const char *s1)
 		ft_strlcpy(str, s1, size);
 	return (str);
 }
+
+char	*ft_safe_strdup(const char *s1)
+{
+	char	*str;
+
+	str = ft_strdup(s1);
+	if (!str)
+		exit(ENOMEM);
+
+	return (str);
+}
+
