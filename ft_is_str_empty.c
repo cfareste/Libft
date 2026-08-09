@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
 size_t	ft_is_str_empty(const char *s)
 {
-	return (s[0] == '\0');
+	return (s == NULL || s[0] == '\0');
 }
