@@ -28,3 +28,8 @@ void	ft_free_matrix(void **matrix)
 	free(matrix);
 	return ;
 }
+
+void	ft_free_str_matrix(char **matrix)
+{
+	ft_free_matrix((void **) matrix);
+}
