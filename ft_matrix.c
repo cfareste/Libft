@@ -25,6 +25,11 @@ int	ft_matrix_length(void **matrix)
 	return (i);
 }
 
+int	ft_str_matrix_length(char **matrix)
+{
+	return (ft_matrix_length((void **) matrix));
+}
+
 void	ft_free_matrix(void **matrix)
 {
 	int	i;
