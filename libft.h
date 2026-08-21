@@ -48,6 +48,7 @@ char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 int 	ft_are_string_equals(const char *s1, const char *s2);
+int		ft_matrix_length(void **matrix);
 void	ft_free_matrix(void **matrix);
 void	ft_free_str_matrix(char **matrix);
 void	*ft_memchr(const void *s, int c, size_t n);
