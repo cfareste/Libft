@@ -30,6 +30,9 @@ char	*ft_safe_strdup(const char *s1)
 {
 	char	*str;
 
+	if (!s1)
+		return (NULL);
+
 	str = ft_strdup(s1);
 	if (!str)
 		exit(ENOMEM);
