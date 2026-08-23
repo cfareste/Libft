@@ -13,21 +13,21 @@
 #include "libft.h"
 #include <unistd.h>
 
-int	print_raw_char(char c)
+int	print_raw_char(int fd, char c)
 {
-	return (write(1, &c, 1));
+	return (write(fd, &c, 1));
 }
 
-int	print_raw_string(char *str)
+int	print_raw_string(int fd, char *str)
 {
 	int	i;
 
 	i = 0;
 	if (!str)
-		return (print_raw_string("(null)"));
+		return (print_raw_string(fd, "(null)"));
 	while (str[i])
 	{
-		if (print_raw_char(str[i]) == -1)
+		if (print_raw_char(fd, str[i]) == -1)
 			return (-1);
 		i++;
 	}

@@ -18,14 +18,14 @@ void	process_precision(char *str, t_ft_printf_flags *flags)
 		flags->precision = ft_strlen(str);
 }
 
-int	print_precised_string(char *str, int precision)
+int	print_precised_string(int fd, char *str, int precision)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] && precision > 0)
 	{
-		if (print_raw_char(str[i]) == -1)
+		if (print_raw_char(fd, str[i]) == -1)
 			return (-1);
 		i++;
 		precision--;

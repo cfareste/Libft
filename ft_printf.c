@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include <stdarg.h>
+#include <unistd.h>
 
 static int	handle_parameter(char const *str, int *pos, va_list *args, t_ft_printf_flags *flags)
 {
@@ -33,7 +34,7 @@ static int	handle_parameter(char const *str, int *pos, va_list *args, t_ft_print
 	else if (specifier == '%')
 		return (print_character('%', flags));
 	else
-		return (print_raw_char(specifier));
+		return (print_raw_char(flags->fd, specifier));
 }
 
 static int	handle_flag(char const *str, int *pos, va_list *args, t_ft_printf_flags *flags)
@@ -55,6 +56,7 @@ int	ft_printf(char const *str, ...)
 
 	i = 0;
 	final_length = 0;
+	flags.fd = STDOUT_FILENO;
 	reset_flags(&flags);
 	va_start(args, str);
 	while (str[i])
@@ -62,7 +64,35 @@ int	ft_printf(char const *str, ...)
 		if (str[i] == '%')
 			bytes_written = handle_flag(str, &i, &args, &flags);
 		else
-			bytes_written = print_raw_char(str[i]);
+			bytes_written = print_raw_char(flags.fd, str[i]);
+		if (bytes_written == -1)
+			return (va_end(args), -1);
+		final_length += bytes_written;
+		i++;
+	}
+	va_end(args);
+	return (final_length);
+}
+
+int	ft_fprintf(const int fd, char const *str, ...)
+{
+	int		i;
+	int		final_length;
+	int		bytes_written;
+	va_list	args;
+	t_ft_printf_flags	flags;
+
+	i = 0;
+	final_length = 0;
+	flags.fd = fd;
+	reset_flags(&flags);
+	va_start(args, str);
+	while (str[i])
+	{
+		if (str[i] == '%')
+			bytes_written = handle_flag(str, &i, &args, &flags);
+		else
+			bytes_written = print_raw_char(flags.fd, str[i]);
 		if (bytes_written == -1)
 			return (va_end(args), -1);
 		final_length += bytes_written;

@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-int	print_width(int bytes, char byte_to_print)
+int	print_width(int fd, int bytes, char byte_to_print)
 {
 	int	i;
 
 	i = 0;
 	while (i < bytes)
 	{
-		if (print_raw_char(byte_to_print) == -1)
+		if (print_raw_char(fd, byte_to_print) == -1)
 			return (-1);
 		i++;
 	}

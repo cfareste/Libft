@@ -67,7 +67,7 @@ int	print_precised_number(char *num_str, t_ft_printf_flags *flags, unsigned int 
 	has_sign = (flags->plus || flags->space || num_str[0] == '-');
 	if (!flags->precision && !n)
 		return (has_sign);
-	if (num_str[i] == '-' && print_raw_char(num_str[i++]) == -1)
+	if (num_str[i] == '-' && print_raw_char(flags->fd, num_str[i++]) == -1)
 		return (-1);
 	num_length = ft_strlen(&num_str[i]);
 	padding = check_padding_difference(num_str, flags);
@@ -75,28 +75,28 @@ int	print_precised_number(char *num_str, t_ft_printf_flags *flags, unsigned int 
 		precision = 0;
 	else
 		precision = padding - num_length;
-	if (print_width(precision, '0') == -1)
+	if (print_width(flags->fd, precision, '0') == -1)
 		return (-1);
-	if (print_raw_string(&num_str[i]) == -1)
+	if (print_raw_string(flags->fd, &num_str[i]) == -1)
 		return (-1);
 	return (precision + num_length + has_sign);
 }
 
-int	print_hex_prefix(unsigned int n, char specifier)
+int	print_hex_prefix(int fd, unsigned int n, char specifier)
 {
 	if (!n)
 		return (0);
 	if (specifier == 'X')
-		return (print_raw_string("0X"));
+		return (print_raw_string(fd, "0X"));
 	else
-		return (print_raw_string("0x"));
+		return (print_raw_string(fd, "0x"));
 }
 
 int	check_for_signs_flags(int n, t_ft_printf_flags *flags)
 {
-	if (flags->plus && n >= 0 && print_raw_char('+') == -1)
+	if (flags->plus && n >= 0 && print_raw_char(flags->fd, '+') == -1)
 		return (-1);
-	if (!flags->plus && flags->space && n >= 0 && print_raw_char(' ') == -1)
+	if (!flags->plus && flags->space && n >= 0 && print_raw_char(flags->fd, ' ') == -1)
 		return (-1);
 	return (0);
 }

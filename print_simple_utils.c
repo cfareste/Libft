@@ -21,16 +21,16 @@ int	print_character(char c, t_ft_printf_flags *flags)
 	byte_to_print = ' ';
 	if (flags->minus)
 	{
-		if (print_raw_char(c) == -1
-			|| print_width(flags->width - 1, byte_to_print) == -1)
+		if (print_raw_char(flags->fd, c) == -1
+			|| print_width(flags->fd, flags->width - 1, byte_to_print) == -1)
 			return (-1);
 	}
 	else
 	{
 		if (flags->zero)
 			byte_to_print = '0';
-		if (print_width(flags->width - 1, byte_to_print) == -1
-			|| print_raw_char(c) == -1)
+		if (print_width(flags->fd, flags->width - 1, byte_to_print) == -1
+			|| print_raw_char(flags->fd, c) == -1)
 			return (-1);
 	}
 	bytes_written = flags->width;
@@ -51,7 +51,7 @@ static int	print_sig_number_string(char *num_str, t_ft_printf_flags *flags, int 
 		byt_wri = print_precised_number(num_str, flags, n);
 		if (byt_wri == -1)
 			return (-1);
-		wdt_wri = print_width(calc_total_width(num_str, flags, byt_wri), ' ');
+		wdt_wri = print_width(flags->fd, calc_total_width(num_str, flags, byt_wri), ' ');
 		if (wdt_wri == -1)
 			return (-1);
 		return (byt_wri + wdt_wri);
@@ -59,7 +59,7 @@ static int	print_sig_number_string(char *num_str, t_ft_printf_flags *flags, int 
 	wdt_wri = 0;
 	if ((!flags->zero && flags->width)
 		|| (flags->zero && flags->precision != -2 && flags->width))
-		wdt_wri = print_width(calc_total_width(num_str, flags, 0), ' ');
+		wdt_wri = print_width(flags->fd, calc_total_width(num_str, flags, 0), ' ');
 	if (wdt_wri == -1 || check_for_signs_flags(n, flags) == -1)
 		return (-1);
 	byt_wri = print_precised_number(num_str, flags, n);
@@ -78,7 +78,7 @@ static int	print_uns_nbr_string(char *num_str, t_ft_printf_flags *flags, unsigne
 		byt_wri = print_precised_number(num_str, flags, n);
 		if (byt_wri == -1)
 			return (-1);
-		wdt_wri = print_width(calc_total_width(num_str, flags, byt_wri), ' ');
+		wdt_wri = print_width(flags->fd, calc_total_width(num_str, flags, byt_wri), ' ');
 		if (wdt_wri == -1)
 			return (-1);
 		return (byt_wri + wdt_wri);
@@ -86,7 +86,7 @@ static int	print_uns_nbr_string(char *num_str, t_ft_printf_flags *flags, unsigne
 	wdt_wri = 0;
 	if ((!flags->zero && flags->width)
 		|| (flags->zero && flags->precision != -2 && flags->width))
-		wdt_wri = print_width(calc_total_width(num_str, flags, 0), ' ');
+		wdt_wri = print_width(flags->fd, calc_total_width(num_str, flags, 0), ' ');
 	if (wdt_wri == -1)
 		return (-1);
 	byt_wri = print_precised_number(num_str, flags, n);
