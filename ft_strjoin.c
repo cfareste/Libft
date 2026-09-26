@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include <stdlib.h>
+#include <errno.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -29,4 +30,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcpy(str, s1, s1_len + 1);
 	ft_strlcpy(str + s1_len, s2, s2_len + 1);
 	return (str);
+}
+
+char	*ft_safe_strjoin(char const *s1, char const *s2)
+{
+	char	*str;
+
+	str = ft_strjoin(s1, s2);
+	if (!str)
+		exit(ENOMEM);
+
+	return str;
 }
