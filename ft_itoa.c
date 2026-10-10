@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <errno.h>
 #include <stdlib.h>
 #include "libft.h"
 
@@ -57,5 +58,15 @@ char	*ft_itoa(int n)
 		num[0] = '0';
 	else
 		putnbr(num, n, num_of_digits - 1);
+	return (num);
+}
+
+char	*ft_safe_itoa(int n)
+{
+	char	*num;
+
+	num = ft_itoa(n);
+	if (!num)
+		exit(ENOMEM);
 	return (num);
 }
